@@ -1,0 +1,35 @@
+Zadatci za prvi tjedan (1 sat rada):
+
+Pon 11.5.2026.
+=================
+ - dogovor
+ - git
+ - baza
+ - registracija za dataset
+
+
+Uto 12.5.
+====================
+ - odabir modela
+ - monolingual dataset
+ - bilingual dataset
+ - trilingual dataset
+ - ako ne uspije registracija: napisat mail
+ 
+ 
+Sri 13.5.
+====================
+
+
+Cet 14.5.
+====================
+
+
+
+Pet 15.5.
+====================
+
+
+Sub 16.5.
+====================
+
