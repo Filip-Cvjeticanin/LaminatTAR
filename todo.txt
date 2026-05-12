@@ -10,15 +10,21 @@ Pon 11.5.2026.
 
 Uto 12.5.
 ====================
- - odabir modela
- - monolingual dataset
- - bilingual dataset
- - trilingual dataset
- - ako ne uspije registracija: napisat mail
+ - odabir modela - DONE
+ - ako ne uspije registracija: napisat mail - DONE
+ - izvlacenje article-a iz github CSV-a - DONE
+ - generiranje bilo kakvog embbedinga za zadani article pomocu XML-Roberta - DONE
+
  
  
 Sri 13.5.
 ====================
+ - vidjet sto dalje sa datasetom
+ - napravit punjenje blokova za generaciju embbedinga i racunanje prosjeka blokova
+ - napraviti NN od 10 slojeva koji prima embeddinge
+ - monolingual dataset 
+ - bilingual dataset
+ - trilingual dataset
 
 
 Cet 14.5.
