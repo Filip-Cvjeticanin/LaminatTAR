@@ -17,3 +17,8 @@ print(specific_row)
 
 # Accessing a specific cell from that row
 # print(f"The name in this row is: {specific_row['Name']}")
+
+print(specific_row.to_dict()["articles"])
+
+def get_article(id):
+    return specific_row.to_dict()["articles"][id]
