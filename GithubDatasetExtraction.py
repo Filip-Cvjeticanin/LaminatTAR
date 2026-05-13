@@ -6,7 +6,7 @@ def get_number_of_articles(articles) -> int:
     :param articles:
     :return:
     """
-    pass
+    return len(articles)
 
 def get_article(ID: int) -> str:
     """
