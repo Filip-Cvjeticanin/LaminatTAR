@@ -46,7 +46,18 @@ class Classifier(nn.Module):
             }
 
 
-    def train_model(self, train_data, labels, epochs=10, lr=1e-4):
+    def train_model(self, train_data, labels, epochs=10, lr=1e-4, epoch_log = 1):
+        """
+        Trains the model using the given training data and labels.\n
+        Training data must be organized into a list of 768 long embbeding vectors and the labels must be converted to an
+        int value between 0 and 2 (inclusive).
+        :param epoch_log:
+        :param train_data:
+        :param labels:
+        :param epochs:
+        :param lr:
+        :return:
+        """
         self.train()
         self.optimizer = optim.Adam(self.parameters(), lr=lr)
 
@@ -57,13 +68,12 @@ class Classifier(nn.Module):
             self.optimizer.zero_grad()
             output_probs = self.forward(inputs)
 
-            # NLLLoss expects log probabilities
             loss = self.criterion(torch.log(output_probs + 1e-9), targets)
 
             loss.backward()
             self.optimizer.step()
 
-            if (epoch + 1) % 1 == 0:
+            if (epoch + 1) % epoch_log == 0:
                 print(f'Epoch [{epoch + 1}/{epochs}], Loss: {loss.item():.6f}')
 
 
