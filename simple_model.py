@@ -11,20 +11,20 @@ class Classifier(nn.Module):
         layers = []
         # Input Layer
         layers.append(nn.Linear(input_size, hidden_size))
-        layers.append(nn.ELU())
 
-        # 9 Additional Hidden Layers (Total 10 ELU layers)
-        for _ in range(num_layers - 1):
+        # Hidden Layers (ELU)
+        for i in range(num_layers):
             layers.append(nn.Linear(hidden_size, hidden_size))
             layers.append(nn.ELU())
 
-        # Output Layer
+        # Output Layer (Logit + softmax)
         layers.append(nn.Linear(hidden_size, num_classes))
         layers.append(nn.Softmax(dim=1))
 
+        # Add layers together.
         self.network = nn.Sequential(*layers)
 
-        # Since we use Softmax in the model, we use NLLLoss
+        # SEt loss function.
         self.criterion = nn.NLLLoss()
         self.optimizer = None
 
