@@ -19,17 +19,21 @@ Uto 12.5.
  
 Sri 13.5.
 ====================
- - vidjet sto dalje sa datasetom
  - napravit punjenje blokova za generaciju embbedinga i racunanje prosjeka blokova - DONE
- - napraviti NN od 10 slojeva koji prima embeddinge
- - monolingual dataset 
- - bilingual dataset
- - trilingual dataset
+ - napraviti NN od 10 slojeva koji prima embeddinge - DONE
+
 
 
 Cet 14.5.
 ====================
-
+ - spojit model u main.py
+ - testiranje pokretanja
+ - skripta za računanje rezultata
+ - skirpta koja pokreće sve datasetove
+ - vidjet sto dalje sa datasetom
+ - monolingual dataset 
+ - bilingual dataset
+ - trilingual dataset
 
 
 Pet 15.5.
