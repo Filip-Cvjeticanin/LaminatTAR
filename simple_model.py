@@ -1,0 +1,80 @@
+import torch
+from torch import nn
+from torch import optim
+from GithubDatasetExtraction import get_article
+from block_roberta import block_based_embedding
+
+class Classifier(nn.Module):
+    def __init__(self, input_size=768, hidden_size=512, num_classes=3, num_layers=10):
+        super().__init__()
+
+        layers = []
+        # Input Layer
+        layers.append(nn.Linear(input_size, hidden_size))
+        layers.append(nn.ELU())
+
+        # 9 Additional Hidden Layers (Total 10 ELU layers)
+        for _ in range(num_layers - 1):
+            layers.append(nn.Linear(hidden_size, hidden_size))
+            layers.append(nn.ELU())
+
+        # Output Layer
+        layers.append(nn.Linear(hidden_size, num_classes))
+        layers.append(nn.Softmax(dim=1))
+
+        self.network = nn.Sequential(*layers)
+
+        # Since we use Softmax in the model, we use NLLLoss
+        self.criterion = nn.NLLLoss()
+        self.optimizer = None
+
+
+    def forward(self, article):
+        return self.network(article)
+
+
+    def predict(self, input_data):
+        self.eval()
+        with torch.no_grad():
+            # Ensure input is a 2D tensor [1, 768]
+            x = torch.tensor(input_data, dtype=torch.float32).view(1, -1)
+            probs = self.forward(x)
+            confidence, predicted = torch.max(probs, 1)
+            return {
+                "class": predicted.item(),
+                "confidence": confidence.item()
+            }
+
+
+    def train_model(self, train_data, labels, epochs=10, lr=1e-4):
+        self.train()
+        self.optimizer = optim.Adam(self.parameters(), lr=lr)
+
+        inputs = torch.tensor(train_data, dtype=torch.float32)
+        targets = torch.tensor(labels, dtype=torch.long)
+
+        for epoch in range(epochs):
+            self.optimizer.zero_grad()
+            output_probs = self.forward(inputs)
+
+            # NLLLoss expects log probabilities
+            loss = self.criterion(torch.log(output_probs + 1e-9), targets)
+
+            loss.backward()
+            self.optimizer.step()
+
+            if (epoch + 1) % 1 == 0:
+                print(f'Epoch [{epoch + 1}/{epochs}], Loss: {loss.item():.6f}')
+
+
+    def save_model(self, file_path):
+        """Saves the model weights to a file."""
+        torch.save(self.state_dict(), file_path)
+        print(f"Model saved to {file_path}")
+
+
+    def load_model(self, file_path):
+        """Loads the model weights from a file."""
+        self.load_state_dict(torch.load(file_path))
+        self.eval()
+        print(f"Model loaded from {file_path}")
