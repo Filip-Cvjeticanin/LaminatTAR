@@ -29,16 +29,20 @@ Cet 14.5.
  - spojit model u main.py
  - testiranje pokretanja
  - skripta za računanje rezultata
- - skirpta koja pokreće sve datasetove
- - vidjet sto dalje sa datasetom
- - monolingual dataset 
- - bilingual dataset
- - trilingual dataset
+ - skirpta koja pokreće sve datasetove -DONE
+ - vidjet sto dalje sa datasetom - DONE
+ - monolingual dataset - TRIVIJALNO !!!
+ - bilingual dataset - TRIVIJALNO !!!
+ - trilingual dataset - TRIVIJALNO !!!
 
 
-Pet 15.5.
+utorak 26.5.
 ====================
-
+ - spojit model u main.py
+ - testiranje pokretanja
+ - skripta za računanje rezultata
+ - vidjet kako ćemo generirat dataset nove primjere
+ - prodiskutirat kako ćemo napraviti heuristiku za branje primjera za monolingual bilingual i trilingual
 
 Sub 16.5.
 ====================
