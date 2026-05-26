@@ -43,6 +43,7 @@ utorak 26.5.
  - skripta za računanje rezultata
  - vidjet kako ćemo generirat dataset nove primjere
  - prodiskutirat kako ćemo napraviti heuristiku za branje primjera za monolingual bilingual i trilingual
+ - promjeni skriptu da loada i test i dev
 
 Sub 16.5.
 ====================
