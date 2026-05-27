@@ -1,5 +1,5 @@
 import pandas as pd
-from GithubDatasetExtraction import get_article
+from oldCode.GithubDatasetExtraction import get_article
 import torch
 from transformers import AutoTokenizer, AutoModel
 import nltk
@@ -11,9 +11,9 @@ nltk.download('punkt_tab')
 def block_based_embedding(text, model, tokenizer, max_len=512):
     sentences = sent_tokenize(text) #list of full sentences using nltk
 
-    for s in sentences:
-        print(s)
-        print()
+    #for s in sentences:
+    #   print(s)
+    #    print()
 
     blocks = []
     current_block = []
@@ -53,19 +53,3 @@ def block_based_embedding(text, model, tokenizer, max_len=512):
     
     final_embedding = torch.cat(block_embeddings).mean(dim=0)
     return final_embedding
-
-
-model_name = "xlm-roberta-base"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModel.from_pretrained(model_name)
-
-
-article_id = 2
-
-article_text = get_article(article_id)
-final_embedding = block_based_embedding(article_text, model, tokenizer)
-
-
-print(f"Vektor za članak {article_id} je spreman!")
-print(f"Dimenzija: {final_embedding.shape}")
-print(f"{final_embedding}")

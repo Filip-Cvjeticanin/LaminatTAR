@@ -1,4 +1,6 @@
 import os
+import random
+from collections import defaultdict
 
 def load_dataset(base_path, languages=None, split="train"):
     dataset = []
@@ -90,3 +92,23 @@ def load_test_dataset(base_path, languages=None):
                 })
 
     return dataset
+
+
+import random
+
+def limit_dataset(dataset, languages, max_per_lang, seed=67):
+    random.seed(seed)
+
+    result = []
+
+    for lang in languages:
+        # take only items from this language
+        items = [x for x in dataset if x["language"] == lang]
+        random.shuffle(items)
+        # take up to max_per_lang
+        selected = items[:max_per_lang]
+        #print(f"{lang}: {len(selected)}")
+        result.extend(selected)
+    #print(f"Total: {len(result)}")
+
+    return result

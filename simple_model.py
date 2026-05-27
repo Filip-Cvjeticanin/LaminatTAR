@@ -1,7 +1,6 @@
 import torch
 from torch import nn
 from torch import optim
-from GithubDatasetExtraction import get_article
 from block_roberta import block_based_embedding
 
 class Classifier(nn.Module):

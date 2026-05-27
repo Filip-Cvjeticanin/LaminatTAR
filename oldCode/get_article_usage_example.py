@@ -1,4 +1,4 @@
-from GithubDatasetExtraction import get_article, get_number_of_articles
+from oldCode.GithubDatasetExtraction import get_article, get_number_of_articles
 import pandas as pd
 
 print(get_article(0))
