@@ -35,10 +35,10 @@ def main():
     print("done embeddings! ^^")
 
 
-    clf = Classifier()
-    clf.train_model(X, y, epochs=5, lr=1e-4)
+    classifier = Classifier()
+    classifier.train_model(X, y, epochs=5, lr=1e-4)
 
-    clf.save_model("classifier.pt")
+    classifier.save_model("classifier.pt")
 
     test_data = load_dataset(
         "./data",
@@ -63,7 +63,7 @@ def main():
     y_pred = []
 
     for x in X_test:
-        pred = clf.predict(x)["class"]
+        pred = classifier.predict(x)["class"]
         y_pred.append(pred)
 
     metrics = evaluate_predictions(y_true=y_test, y_pred=y_pred, languages=languages_test)
