@@ -1,6 +1,7 @@
 import os
 import random
 from collections import defaultdict
+from nltk.tokenize import sent_tokenize
 
 def load_dataset(base_path, languages=None, split="train"):
     dataset = []
@@ -112,3 +113,100 @@ def limit_dataset(dataset, languages, max_per_lang, seed=67):
     #print(f"Total: {len(result)}")
 
     return result
+
+def augment_with_sentence_sampling(dataset, sample_ratio=0.3, seed=42):
+    random.seed(seed)
+
+    augmented = []
+
+    for item in dataset:
+        text = item["text"]
+
+        sentences = sent_tokenize(text)
+
+        if len(sentences) == 0:
+            continue
+
+        # take 30% of sentences (at least 1)
+        k = max(1, int(len(sentences) * sample_ratio))
+
+        sampled_sentences = random.sample(sentences, k)
+
+        new_text = " ".join(sampled_sentences)
+
+        augmented.append({
+            "id": item["id"],
+            "text": new_text,
+            "label": item.get("label", None),
+            "language": item["language"],
+            "augmented": True
+        })
+
+    return dataset + augmented
+
+
+from pathlib import Path
+
+def load_synthetic_dataset(base_path):
+    dataset = []
+
+    base_path = Path(base_path)
+
+    labels_path = base_path / "synthetic_train_labels.txt"
+
+    # load global labels
+    labels = {}
+    if labels_path.exists():
+        with open(labels_path, "r", encoding="utf-8") as f:
+            for line in f:
+                parts = line.strip().split("\t")
+                if len(parts) == 2:
+                    article_id, label = parts
+                    labels[article_id] = label
+
+    # each language folder
+    for lang_folder in base_path.iterdir():
+        if not lang_folder.is_dir():
+            continue
+
+        lang = lang_folder.name.replace("_synt", "")
+
+        print("Loading:", lang_folder)
+
+        for file in lang_folder.iterdir():
+            if file.suffix == ".txt" and file.name.startswith("synthetic_article"):
+                article_id = file.stem.replace("synthetic_article", "")
+
+                text = file.read_text(encoding="utf-8")
+
+                dataset.append({
+                    "id": article_id,
+                    "text": text,
+                    "label": labels.get(article_id),
+                    "language": lang,
+                    "synthetic": True
+                })
+
+    print("Synthetic loaded:", len(dataset))
+    return dataset
+
+def merge_real_and_synthetic(real_data, synthetic_data):
+    merged = []
+
+    # group synthetic by language
+    synth_by_lang = defaultdict(list)
+    for item in synthetic_data:
+        synth_by_lang[item["language"]].append(item)
+
+    # group real by language
+    real_by_lang = defaultdict(list)
+    for item in real_data:
+        real_by_lang[item["language"]].append(item)
+
+    languages = set(real_by_lang.keys()) | set(synth_by_lang.keys())
+
+    for lang in languages:
+        merged.extend(real_by_lang[lang])
+        merged.extend(synth_by_lang[lang])
+
+    return merged

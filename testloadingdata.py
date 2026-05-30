@@ -2,6 +2,8 @@ from loadData import load_dataset
 from loadData import count_articles_in_dataset
 from loadData import load_test_dataset
 from loadData import limit_dataset
+from loadData import load_synthetic_dataset
+from loadData import merge_real_and_synthetic
 
 languages = []
 languages.append("en")
@@ -26,3 +28,12 @@ print(data_test[1])
 
 data_limited = limit_dataset(dataset=data, languages=["en"], max_per_lang=100)
 data_limited2 = limit_dataset(dataset=data, languages=["en", "fr"], max_per_lang=50)
+
+
+
+synthetic = load_synthetic_dataset("./synthetic data")
+print(len(synthetic))
+
+data_combine = merge_real_and_synthetic(data, synthetic)
+
+
