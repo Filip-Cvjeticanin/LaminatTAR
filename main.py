@@ -1,6 +1,6 @@
 import torch
 from transformers import AutoTokenizer, AutoModel
-from loadData import load_dataset, limit_dataset
+from load_data import load_dataset, limit_dataset
 from block_roberta import block_based_embedding
 from simple_model import Classifier
 from evaluation import evaluate_predictions, print_evaluation_report

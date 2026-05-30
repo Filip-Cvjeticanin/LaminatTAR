@@ -1,7 +1,7 @@
-from loadData import load_dataset
-from loadData import count_articles_in_dataset
-from loadData import load_test_dataset
-from loadData import limit_dataset
+from load_data import load_dataset
+from load_data import count_articles_in_dataset
+from load_data import load_test_dataset
+from load_data import limit_dataset
 
 languages = []
 languages.append("en")

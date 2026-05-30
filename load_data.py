@@ -3,6 +3,13 @@ import random
 from collections import defaultdict
 
 def load_dataset(base_path, languages=None, split="train"):
+    """
+    Reads the TRAIN dataset form folder structure.
+    :param base_path:
+    :param languages:
+    :param split:
+    :return:
+    """
     dataset = []
 
     for lang in os.listdir(base_path):
@@ -58,6 +65,12 @@ def count_articles_in_dataset(dataset, language):
 
 
 def load_test_dataset(base_path, languages=None):
+    """
+    Reads the TEST dataset form folder structure.
+    :param base_path:
+    :param languages:
+    :return:
+    """
     dataset = []
 
     for lang in os.listdir(base_path):
@@ -96,6 +109,14 @@ def load_test_dataset(base_path, languages=None):
 
 
 def limit_dataset(dataset, languages, max_per_lang, seed=67):
+    """
+    Returns a smaller dataset with filtered languages.
+    :param dataset:
+    :param languages:
+    :param max_per_lang:
+    :param seed:
+    :return:
+    """
     random.seed(seed)
 
     result = []
