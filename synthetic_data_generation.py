@@ -12,15 +12,17 @@ KATEGORIJE = ["satire", "opinion", "reporting"]
 BROJ_PRIMJERA_PO_JEZIKU = 200
 
 # STVARANJE MAPE: Definiramo ime mape u koju sve spremamo
-NAZIV_MAPE = "sinteticki_dataset_projekt"
+TRENUTNA_MAPA = os.getcwd()
+NAZIV_MAPE = "synthetic data"
 
-# Ako mapa ne postoji na Desktopu (ili gdje vec pokreces skriptu), kôd je sam stvara
-if not os.path.exists(NAZIV_MAPE):
-    os.makedirs(NAZIV_MAPE)
-    print(f"Stvorena je nova mapa: {NAZIV_MAPE}")
+PUNA_PUTANJA_MAPE = os.path.join(TRENUTNA_MAPA, NAZIV_MAPE)
+
+if not os.path.exists(PUNA_PUTANJA_MAPE):
+    os.makedirs(PUNA_PUTANJA_MAPE)
+    print(f"Stvorena je nova mapa pokraj skripte: {PUNA_PUTANJA_MAPE}")
 
 # Putanja do glavne datoteke unutar te nove mape
-LABELS_OUTPUT_FILE = os.path.join(NAZIV_MAPE, "synthetic_train_labels.txt")
+LABELS_OUTPUT_FILE = os.path.join(PUNA_PUTANJA_MAPE, "synthetic_train_labels.txt")
 
 print("Zapocinjem generiranje REPLICIRANOG SINTETICKOG DATASETA za 3 jezika...")
 
@@ -59,7 +61,7 @@ for jezik in JEZICI:
             
             # Putanja do pojedinacnog clanka UNUTAR nove mape
             ime_artikla = f"synthetic_article{trenutni_sinteticki_id}.txt"
-            putanja_artikla = os.path.join(NAZIV_MAPE, ime_artikla)
+            putanja_artikla = os.path.join(PUNA_PUTANJA_MAPE, ime_artikla)
             
             # 1. Spremanje teksta u datoteku unutar mape
             with open(putanja_artikla, "w", encoding="utf-8") as art_f:
@@ -79,4 +81,4 @@ for jezik in JEZICI:
             time.sleep(2)
             continue
 
-print(f"\nSve je zavrseno! Cijeli dataset se nalazi u mapi: {NAZIV_MAPE}")
+
