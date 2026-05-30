@@ -30,11 +30,6 @@ data = merge_real_and_synthetic(data, synthetic)
 print("data loaded! :)", len(data))
 
 
-#load dataset
-print("loading data...")
-data = load_dataset("./data", languages=["en"], split="train")
-data = limit_dataset(data, ["en"], max_per_lang=10)
-print("data loaded! :)")
 
 #mapiranje labela
 label_map = { "satire": 0, "opinion": 1, "reporting": 2}
@@ -103,6 +98,14 @@ for item in test_data_seen:
     languages_seen.append(item["language"])
 
 
+
+
+
+
+
+
+
+
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TEST !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 print("\nTesting unseen...")
 
@@ -123,7 +126,7 @@ y_pred_seen = []
 
 
 for x in X_test_seen:
-    pred = clf.predict(x)["class"]
+    pred = classifier.predict(x)["class"]
     y_pred_seen.append(int(pred))
 
 metrics_seen = evaluate_predictions(y_true=y_test_seen, y_pred=y_pred_seen, languages=languages_seen)
