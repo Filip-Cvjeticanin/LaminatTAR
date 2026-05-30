@@ -4,6 +4,7 @@ from transformers import AutoTokenizer, AutoModel
 from loadData import load_dataset, limit_dataset
 from block_roberta import block_based_embedding
 from simple_model import Classifier
+from evaluation import evaluate_predictions, print_evaluation_report
 
 #load transformer model
 model_name = "xlm-roberta-base"
@@ -46,26 +47,25 @@ test_data = load_dataset(
 
 X_test = []
 y_test = []
+languages_test = []
 
 for item in test_data:
     emb = block_based_embedding(item["text"], roberta, tokenizer)
     X_test.append(emb.numpy())
     y_test.append(label_map[item["label"]])
+    languages_test.append(item["language"])
 
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!SIMPLE TEST !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 print("\nTesting...")
 
-correct = 0
+y_pred = []
 
-for x, y_true in zip(X_test, y_test):
+for x in X_test:
     pred = clf.predict(x)["class"]
+    y_pred.append(pred)
 
-    if pred == y_true:
-        correct += 1
-
-accuracy = correct / len(X_test)
-
-print(f"Test Accuracy: {accuracy:.4f}")
+metrics = evaluate_predictions(y_true=y_test, y_pred=y_pred, languages=languages_test)
+print_evaluation_report(metrics)
 
 
