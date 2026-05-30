@@ -14,7 +14,6 @@ def load_dataset(base_path, languages=None, split="train"):
         if languages is not None and lang not in languages:
             continue
 
-        # 🔹 use split here
         articles_path = os.path.join(lang_path, f"{split}-articles-subtask-1")
         labels_path = os.path.join(lang_path, f"{split}-labels-subtask-1.txt")
 
@@ -56,7 +55,7 @@ def load_dataset(base_path, languages=None, split="train"):
 def count_articles_in_dataset(dataset, language):
     return sum(1 for item in dataset if item["language"] == language)
 
-import os
+
 
 def load_test_dataset(base_path, languages=None):
     dataset = []
@@ -94,7 +93,7 @@ def load_test_dataset(base_path, languages=None):
     return dataset
 
 
-import random
+
 
 def limit_dataset(dataset, languages, max_per_lang, seed=67):
     random.seed(seed)

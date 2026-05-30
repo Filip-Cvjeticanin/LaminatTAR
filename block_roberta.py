@@ -1,7 +1,8 @@
-import pandas as pd
-from oldCode.GithubDatasetExtraction import get_article
+#import pandas as pd
+#from oldCode.GithubDatasetExtraction import get_article
+#from transformers import AutoTokenizer, AutoModel
+
 import torch
-from transformers import AutoTokenizer, AutoModel
 import nltk
 from nltk.tokenize import sent_tokenize
 
