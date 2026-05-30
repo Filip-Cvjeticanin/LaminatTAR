@@ -9,6 +9,8 @@ from nltk.tokenize import sent_tokenize
 nltk.download('punkt')
 nltk.download('punkt_tab')
 
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
 def block_based_embedding(text, model, tokenizer, max_len=512):
     sentences = sent_tokenize(text) #list of full sentences using nltk
 
@@ -24,6 +26,7 @@ def block_based_embedding(text, model, tokenizer, max_len=512):
     for sentence in sentences:
         sentence_tokens = tokenizer.encode(sentence, add_special_tokens = False) #without special tokens
         num_tokens = len(sentence_tokens)
+        
 
         if num_tokens > max_limit:
             sentence_tokens = sentence_tokens[:max_limit]
@@ -44,7 +47,7 @@ def block_based_embedding(text, model, tokenizer, max_len=512):
     
     for block in blocks:
         inputs = tokenizer(block, return_tensors="pt", padding=True, truncation=True)
-        
+        inputs = {k: v.to(device) for k, v in inputs.items()}
         with torch.no_grad():
             outputs = model(**inputs)
             

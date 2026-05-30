@@ -1,0 +1,44 @@
+BASELINE: Testing unseen...
+Overall Accuracy: 0.7402
+Overall Macro F1: 0.2836
+
+Performance per language:
+  - [IT] Macro F1: 0.2892 | Accuracy: 0.7662
+  - [PO] Macro F1: 0.2745 | Accuracy: 0.7000
+===================================================
+
+
+Testing seen....
+Overall Accuracy: 0.5022
+Overall Macro F1: 0.2229
+
+Performance per language:
+  - [EN] Macro F1: 0.1294 | Accuracy: 0.2410
+  - [FR] Macro F1: 0.2622 | Accuracy: 0.6481
+  - [GE] Macro F1: 0.2613 | Accuracy: 0.6444
+  - [RU] Macro F1: 0.2634 | Accuracy: 0.6531
+===================================================
+
+BASELINE + AUGMENTED
+Testing unseen...
+Overall Accuracy: 0.7402
+Overall Macro F1: 0.2836
+
+Performance per language:
+  - [IT] Macro F1: 0.2892 | Accuracy: 0.7662
+  - [PO] Macro F1: 0.2745 | Accuracy: 0.7000
+===================================================
+
+
+Testing seen....
+Overall Accuracy: 0.5022
+Overall Macro F1: 0.2229
+
+Performance per language:
+  - [EN] Macro F1: 0.1294 | Accuracy: 0.2410
+  - [FR] Macro F1: 0.2622 | Accuracy: 0.6481
+  - [GE] Macro F1: 0.2613 | Accuracy: 0.6444
+  - [RU] Macro F1: 0.2634 | Accuracy: 0.6531
+===================================================
+
+
