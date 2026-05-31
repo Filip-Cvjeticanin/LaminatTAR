@@ -31,7 +31,7 @@ def experiment(synthetic_data):
     synthetic = load_synthetic_dataset("./synthetic data")
     if synthetic_data:
         data = merge_real_and_synthetic(data, synthetic)
-    data = limit_dataset(data, ["en","fr","ge","ru"], max_per_lang=50)
+    #data = limit_dataset(data, ["en","fr","ge","ru"], max_per_lang=50)
     print("data loaded! :)", len(data))
 
 
@@ -66,7 +66,7 @@ def experiment(synthetic_data):
     }, "train_embeddingrealsintetic.pt")
 
     classifier = Classifier()
-    classifier.train_model(X, y, epochs=100, lr=1e-2)
+    classifier.train_model(X, y, epochs=5000, lr=1e-3)
     classifier.save_model("classifier.pt")
 
 
@@ -75,7 +75,7 @@ def experiment(synthetic_data):
         languages=["po","it"],   # unseen language
         split="dev"
     )
-    test_data = limit_dataset(test_data, ["po","it"], max_per_lang=10)
+    #test_data = limit_dataset(test_data, ["po","it"], max_per_lang=10)
 
     test_data_seen = load_dataset(
         "./data",
@@ -83,7 +83,7 @@ def experiment(synthetic_data):
         split="dev"
     )
 
-    test_data_seen = limit_dataset(test_data_seen, ["en","fr","ge","ru"], max_per_lang=10)
+    #test_data_seen = limit_dataset(test_data_seen, ["en","fr","ge","ru"], max_per_lang=10)
 
     X_test = []
     y_test = []
@@ -155,6 +155,7 @@ def experiment(synthetic_data):
 
 
 torch.manual_seed(42)
+random.seed(42)
 log_line("-------non-synt:----------:", "./logs/log.txt")
 experiment(False)
 log_line("-------synt:----------:", "./logs/log.txt")
