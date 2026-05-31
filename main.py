@@ -10,9 +10,13 @@ from load_data import load_dataset, limit_dataset, load_test_dataset, augment_wi
 from block_roberta import block_based_embedding
 from simple_model import Classifier
 from evaluation import evaluate_predictions, print_evaluation_report, log_evaluation_report, log_line
+from utils import set_global_seed
 
 
 def experiment(synthetic_data):
+
+    seed = 67
+    set_global_seed(seed)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print("Using device:", device)
 
@@ -46,16 +50,14 @@ def experiment(synthetic_data):
     for i, item in enumerate(data):
         emb = block_based_embedding(item["text"], roberta, tokenizer)
 
-        X.append(emb.numpy())
+        X.append(emb.detach().cpu().numpy())
         y.append(label_map[item["label"]])
 
         print("data emb: ", i / len(data) * 100, "%", sep="")
 
 
-
-
-    X.append(emb.detach().cpu().numpy())
-    y.append(label_map[item["label"]])
+    #X.append(emb.detach().cpu().numpy())
+    #y.append(label_map[item["label"]])
     print("done embeddings! ^^")
 
 
@@ -159,6 +161,3 @@ log_line("-------non-synt:----------:", "./logs/log.txt")
 experiment(False)
 log_line("-------synt:----------:", "./logs/log.txt")
 experiment(True)
-
-
-
