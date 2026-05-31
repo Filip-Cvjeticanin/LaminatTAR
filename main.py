@@ -12,13 +12,10 @@ from simple_model import Classifier
 from evaluation import evaluate_predictions, print_evaluation_report, log_evaluation_report, log_line
 from utils import set_global_seed
 from experiments.first_test import first_experiment
+from experiments.data_agumentation_coparisson import compare_augmentation_methods
 
 
+#torch.set_num_threads(10)
+#torch.set_num_interop_threads(8)
 
-
-torch.manual_seed(42)
-random.seed(42)
-log_line("-------non-synt:----------:", "./logs/log.txt")
-first_experiment(False)
-log_line("-------synt:----------:", "./logs/log.txt")
-first_experiment(True)
+compare_augmentation_methods()

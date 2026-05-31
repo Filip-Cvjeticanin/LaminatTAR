@@ -122,12 +122,15 @@ def limit_dataset(dataset, languages, max_per_lang, seed=67676767):
 
     result = []
 
+    #print("languages:", languages)
     for lang in languages:
         # take only items from this language
         items = [x for x in dataset if x["language"] == lang]
         random.shuffle(items)
+        #print("items:", len(items))
         # take up to max_per_lang
         selected = items[:max_per_lang]
+        #print("selected:", len(selected))
         #print(f"{lang}: {len(selected)}")
         result.extend(selected)
     #print(f"Total: {len(result)}")
