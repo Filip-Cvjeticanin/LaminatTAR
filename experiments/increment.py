@@ -23,6 +23,7 @@ def run_experiment_lang(experiment_data):
     epochs = experiment_data["epochs"]
     model_path = experiment_data["model_path"]
     lr = experiment_data["lr"]
+    log_header_line = experiment_data["log_header_line"]
 
     # (2) Set global seed and use gpu ==================================================================================
     set_global_seed(seed)
@@ -138,27 +139,34 @@ def run_experiment_lang(experiment_data):
 
 
 
-#max mora bit djeljiv s 3 i 2 !
-def incriment_languages(languages, max, seed, unseen, lr, epochs):
+#max mora bit djeljiv s 3 i 2 (ne mora al pozeljno)!
+def incriment_languages(languages, max):
+    seed = 68273
+    lr = 1e-2
+    epochs = 5000
+    unseen= ["po", "it"]
     experiments = []
+    # Inkrementalno se uzimaju
     for i in range(1, len(languages)+1):
         experimentlang = languages[:i]
 
+        # Dijeli se na jednake dijelove ovisno kolko ih je 
         max_per_lang = max // len(experimentlang)
 
         experiment = {
-            "name": f"exp_{i}",
+            "name": f"exp_{"_".join(experimentlang)}",
             "train_languages": experimentlang,
             "max_per_lang": max_per_lang,
-            "log_path": f"./logs/exp_{i}.txt",
+            "log_path": f"./logs/exp_{"_".join(experimentlang)}.txt",
             "seed": seed,
             "test_seen_languages": experimentlang,
-            "test_unseen_languages": [],
+            "test_unseen_languages": unseen,
             "use_sythetic": False,
             "use_sent_augmentation": True,
             "lr": lr,
             "epochs": epochs,
-            "model_path": "./models/01_no_augmentation.pt",
+            "model_path": f"./models/model_{"_".join(experimentlang)}.pt",
+            "log_header_line": f"=== {"_".join(experimentlang)} ==="
         }
         experiments.append(experiment)
 
