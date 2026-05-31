@@ -1,0 +1,27 @@
+=== en ===
+SEEN:
+=======================LOG START=====================
+Overall Accuracy: 0.4848
+Overall Macro F1: 0.3761
+
+Performance per language:
+  - [EN] Macro F1: 0.2574 | Accuracy: 0.2892
+  - [FR] Macro F1: 0.3199 | Accuracy: 0.5370
+  - [GE] Macro F1: 0.4733 | Accuracy: 0.5778
+  - [RU] Macro F1: 0.4733 | Accuracy: 0.6735
+===================================================
+=======================LOG  END =====================
+
+
+UNSEEN:
+=======================LOG START=====================
+Overall Accuracy: 0.4094
+Overall Macro F1: 0.2700
+
+Performance per language:
+  - [IT] Macro F1: 0.1330 | Accuracy: 0.2208
+  - [PO] Macro F1: 0.2745 | Accuracy: 0.7000
+===================================================
+=======================LOG  END =====================
+
+
