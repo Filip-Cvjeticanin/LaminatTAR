@@ -14,6 +14,7 @@ class Classifier(nn.Module):
         # Hidden Layers (ELU)
         for i in range(num_layers):
             layers.append(nn.Linear(hidden_size, hidden_size))
+            layers.append(nn.BatchNorm1d(hidden_size))
             layers.append(nn.ELU())
 
         # Output Layer (Logit + softmax)

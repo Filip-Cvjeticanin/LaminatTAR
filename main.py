@@ -31,7 +31,7 @@ def experiment(synthetic_data):
     synthetic = load_synthetic_dataset("./synthetic data")
     if synthetic_data:
         data = merge_real_and_synthetic(data, synthetic)
-    data = limit_dataset(data, ["en","fr","ge","ru"], max_per_lang=10)
+    data = limit_dataset(data, ["en","fr","ge","ru"], max_per_lang=50)
     print("data loaded! :)", len(data))
 
 
