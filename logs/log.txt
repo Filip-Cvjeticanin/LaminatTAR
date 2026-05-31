@@ -1,0 +1,108 @@
+-------non-synt:----------:
+SEEN:
+=======================LOG START=====================
+Overall Accuracy: 0.5000
+Overall Macro F1: 0.2222
+
+Performance per language:
+  - [EN] Macro F1: 0.0000 | Accuracy: 0.0000
+  - [FR] Macro F1: 0.2745 | Accuracy: 0.7000
+  - [GE] Macro F1: 0.4737 | Accuracy: 0.9000
+  - [RU] Macro F1: 0.2857 | Accuracy: 0.4000
+===================================================
+=======================LOG  END =====================
+
+
+UNSEEN:
+=======================LOG START=====================
+Overall Accuracy: 0.8500
+Overall Macro F1: 0.3063
+
+Performance per language:
+  - [PO] Macro F1: 0.4444 | Accuracy: 0.8000
+  - [IT] Macro F1: 0.4737 | Accuracy: 0.9000
+===================================================
+=======================LOG  END =====================
+
+
+-------synt:----------:
+SEEN:
+=======================LOG START=====================
+Overall Accuracy: 0.0750
+Overall Macro F1: 0.0465
+
+Performance per language:
+  - [EN] Macro F1: 0.0909 | Accuracy: 0.1000
+  - [FR] Macro F1: 0.0606 | Accuracy: 0.1000
+  - [GE] Macro F1: 0.0909 | Accuracy: 0.1000
+  - [RU] Macro F1: 0.0000 | Accuracy: 0.0000
+===================================================
+=======================LOG  END =====================
+
+
+UNSEEN:
+=======================LOG START=====================
+Overall Accuracy: 0.1000
+Overall Macro F1: 0.0606
+
+Performance per language:
+  - [PO] Macro F1: 0.1667 | Accuracy: 0.2000
+  - [IT] Macro F1: 0.0000 | Accuracy: 0.0000
+===================================================
+=======================LOG  END =====================
+
+
+-------non-synt:----------:
+SEEN:
+=======================LOG START=====================
+Overall Accuracy: 0.5000
+Overall Macro F1: 0.2222
+
+Performance per language:
+  - [EN] Macro F1: 0.0000 | Accuracy: 0.0000
+  - [FR] Macro F1: 0.2745 | Accuracy: 0.7000
+  - [GE] Macro F1: 0.4737 | Accuracy: 0.9000
+  - [RU] Macro F1: 0.2857 | Accuracy: 0.4000
+===================================================
+=======================LOG  END =====================
+
+
+UNSEEN:
+=======================LOG START=====================
+Overall Accuracy: 0.8500
+Overall Macro F1: 0.3063
+
+Performance per language:
+  - [PO] Macro F1: 0.4444 | Accuracy: 0.8000
+  - [IT] Macro F1: 0.4737 | Accuracy: 0.9000
+===================================================
+=======================LOG  END =====================
+
+
+-------synt:----------:
+SEEN:
+=======================LOG START=====================
+Overall Accuracy: 0.0750
+Overall Macro F1: 0.0465
+
+Performance per language:
+  - [EN] Macro F1: 0.0909 | Accuracy: 0.1000
+  - [FR] Macro F1: 0.0606 | Accuracy: 0.1000
+  - [GE] Macro F1: 0.0909 | Accuracy: 0.1000
+  - [RU] Macro F1: 0.0000 | Accuracy: 0.0000
+===================================================
+=======================LOG  END =====================
+
+
+UNSEEN:
+=======================LOG START=====================
+Overall Accuracy: 0.1000
+Overall Macro F1: 0.0606
+
+Performance per language:
+  - [PO] Macro F1: 0.1667 | Accuracy: 0.2000
+  - [IT] Macro F1: 0.0000 | Accuracy: 0.0000
+===================================================
+=======================LOG  END =====================
+
+

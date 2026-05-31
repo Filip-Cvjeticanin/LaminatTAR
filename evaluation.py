@@ -41,3 +41,23 @@ def print_evaluation_report(metrics):
         for lang, lang_metrics in metrics['per_language'].items():
             print(f"  - [{lang.upper()}] Macro F1: {lang_metrics['macro_f1']:.4f} | Accuracy: {lang_metrics['accuracy']:.4f}")
     print("===================================================\n")
+
+
+def log_evaluation_report(metrics, path):
+    with open(path, 'a') as f:
+        f.write("=======================LOG START=====================\n")
+        f.write(f"Overall Accuracy: {metrics['overall_accuracy']:.4f}\n")
+        f.write(f"Overall Macro F1: {metrics['overall_macro_f1']:.4f}\n")
+
+        if 'per_language' in metrics:
+            f.write("\nPerformance per language:\n")
+            for lang, lang_metrics in metrics['per_language'].items():
+                f.write(
+                    f"  - [{lang.upper()}] Macro F1: {lang_metrics['macro_f1']:.4f} | Accuracy: {lang_metrics['accuracy']:.4f}\n")
+        f.write("===================================================\n")
+        f.write("=======================LOG  END =====================\n\n\n")
+
+
+def log_line(line, path):
+    with open(path, 'a') as f:
+        f.write(f"{line}\n")
