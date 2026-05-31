@@ -57,7 +57,7 @@ def run_experiment(experiment_data):
     print("data loaded! :)", len(data))
 
     #TODO remove limiters
-    data = limit_dataset(data, train_languages, 3, seed)
+    #data = limit_dataset(data, train_languages, 3, seed)
 
 
     # (4) Setup embeddings. ============================================================================================
@@ -103,8 +103,8 @@ def run_experiment(experiment_data):
     )
 
     #  TODO remove limiters
-    test_data_seen = limit_dataset(test_data_seen, test_seen_languages, 3, seed)
-    test_data_unseen = limit_dataset(test_data_unseen, test_unseen_languages, 3, seed)
+    #test_data_seen = limit_dataset(test_data_seen, test_seen_languages, 3, seed)
+    #test_data_unseen = limit_dataset(test_data_unseen, test_unseen_languages, 3, seed)
 
     # Create emb lists.
     X_test_seen = []
