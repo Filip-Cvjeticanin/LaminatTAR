@@ -1,0 +1,27 @@
+=== SYNTHETIC ===
+SEEN:
+=======================LOG START=====================
+Overall Accuracy: 0.5455
+Overall Macro F1: 0.4730
+
+Performance per language:
+  - [EN] Macro F1: 0.2544 | Accuracy: 0.2651
+  - [FR] Macro F1: 0.7430 | Accuracy: 0.8519
+  - [GE] Macro F1: 0.5044 | Accuracy: 0.5333
+  - [RU] Macro F1: 0.5715 | Accuracy: 0.6939
+===================================================
+=======================LOG  END =====================
+
+
+UNSEEN:
+=======================LOG START=====================
+Overall Accuracy: 0.3543
+Overall Macro F1: 0.2446
+
+Performance per language:
+  - [IT] Macro F1: 0.1087 | Accuracy: 0.1948
+  - [PO] Macro F1: 0.3891 | Accuracy: 0.6000
+===================================================
+=======================LOG  END =====================
+
+
