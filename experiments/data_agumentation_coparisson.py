@@ -160,7 +160,7 @@ def run_experiment(experiment_data):
 
 def compare_augmentation_methods():
     seed = 68273
-    epochs = 100
+    epochs = 5000
     lr = 1e-2
     train_languages = ["en","fr","ge","ru"]
     test_seen_languages = ["en","fr","ge","ru"]
