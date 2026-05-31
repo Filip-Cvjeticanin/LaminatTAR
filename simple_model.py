@@ -4,7 +4,7 @@ from torch import optim
 from block_roberta import block_based_embedding
 
 class Classifier(nn.Module):
-    def __init__(self, input_size=768, hidden_size=512, num_classes=3, num_layers=10):
+    def __init__(self, input_size=768, hidden_size=512, num_classes=3, num_layers=5):
         super().__init__()
 
         layers = []

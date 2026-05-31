@@ -39,7 +39,8 @@ def block_based_embedding(text, model, tokenizer, max_len=512):
             blocks.append(" ".join(current_block))
             current_block = [sentence]
             current_count = num_tokens
-            
+
+
     if current_block:
         blocks.append(" ".join(current_block))
 
