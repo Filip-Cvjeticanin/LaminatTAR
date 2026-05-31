@@ -1,0 +1,54 @@
+=== AUGMENTED1 ===
+SEEN:
+=======================LOG START=====================
+Overall Accuracy: 0.5498
+Overall Macro F1: 0.4450
+
+Performance per language:
+  - [EN] Macro F1: 0.2590 | Accuracy: 0.3614
+  - [FR] Macro F1: 0.6069 | Accuracy: 0.7407
+  - [GE] Macro F1: 0.4940 | Accuracy: 0.5556
+  - [RU] Macro F1: 0.3862 | Accuracy: 0.6531
+===================================================
+=======================LOG  END =====================
+
+
+UNSEEN:
+=======================LOG START=====================
+Overall Accuracy: 0.5591
+Overall Macro F1: 0.4704
+
+Performance per language:
+  - [IT] Macro F1: 0.4166 | Accuracy: 0.7403
+  - [PO] Macro F1: 0.2935 | Accuracy: 0.2800
+===================================================
+=======================LOG  END =====================
+
+
+=== AUGMENTED1 ===
+SEEN:
+=======================LOG START=====================
+Overall Accuracy: 0.5238
+Overall Macro F1: 0.4254
+
+Performance per language:
+  - [EN] Macro F1: 0.1758 | Accuracy: 0.2771
+  - [FR] Macro F1: 0.5808 | Accuracy: 0.7222
+  - [GE] Macro F1: 0.4032 | Accuracy: 0.4889
+  - [RU] Macro F1: 0.6875 | Accuracy: 0.7551
+===================================================
+=======================LOG  END =====================
+
+
+UNSEEN:
+=======================LOG START=====================
+Overall Accuracy: 0.3386
+Overall Macro F1: 0.3030
+
+Performance per language:
+  - [IT] Macro F1: 0.3401 | Accuracy: 0.3896
+  - [PO] Macro F1: 0.2525 | Accuracy: 0.2600
+===================================================
+=======================LOG  END =====================
+
+
