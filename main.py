@@ -65,7 +65,7 @@ def experiment(synthetic_data):
     torch.save({
         "X": X,
         "y": y,
-    }, "train_embeddingrealsintetic.pt")
+    }, "models/train_embeddingrealsintetic.pt")
 
     classifier = Classifier()
     classifier.train_model(X, y, epochs=5000, lr=1e-3)
