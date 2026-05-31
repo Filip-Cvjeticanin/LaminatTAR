@@ -230,3 +230,58 @@ def merge_real_and_synthetic(real_data, synthetic_data):
         merged.extend(synth_by_lang[lang])
 
     return merged
+
+def balance_and_limit_dataset(dataset, languages, max_per_lang, sample_ratio=0.3, seed=42):
+    """
+    Uzima podatke za zadane jezike i osigurava da SVAKI jezik ima TOČNO max_per_lang podataka.
+    Ako podatak fali, nadopunjuje ga augmentacijom (30% rečenica) iz postojećih članaka tog jezika.
+    """
+    random.seed(seed)
+    result = []
+
+    for lang in languages:
+        # 1. Filtriraj podatke samo za ovaj jezik
+        lang_items = [x for x in dataset if x["language"] == lang]
+        random.shuffle(lang_items)
+        
+        num_available = len(lang_items)
+        
+        if num_available >= max_per_lang:
+            # Ako imamo dovoljno, samo uzmi koliko nam treba
+            selected = lang_items[:max_per_lang]
+            result.extend(selected)
+            print(f"Jezik '{lang}': Uzeto {len(selected)} stvarnih podataka (ima ih dovoljno).")
+        
+        else:
+            # Ako nemamo dovoljno, uzimamo sve stvarne i radimo augmentaciju za ostatak
+            result.extend(lang_items) # Dodajemo sve stvarne (npr. 150)
+            
+            needed_more = max_per_lang - num_available
+            print(f"Jezik '{lang}': Ima samo {num_available}/{max_per_lang}. Augmentiram još {needed_more} podataka...")
+            
+            # Nasumično biramo članke iz kojih ćemo raditi augmentaciju (može se ponoviti neki ako baš jako puno fali)
+            pool_to_augment = random.choices(lang_items, k=needed_more)
+            
+            for item in pool_to_augment:
+                text = item["text"]
+                sentences = sent_tokenize(text)
+                
+                if len(sentences) == 0:
+                    # failsafe ako je tekst prazan, uzmi cijeli tekst
+                    new_text = text
+                else:
+                    k = max(1, int(len(sentences) * sample_ratio))
+                    sampled_sentences = random.sample(sentences, k)
+                    new_text = " ".join(sampled_sentences)
+                
+                # Kreiramo novi augmentirani objekt
+                augmented_item = {
+                    "id": f"{item['id']}_aug",
+                    "text": new_text,
+                    "label": item.get("label", None),
+                    "language": item["language"],
+                    "augmented": True
+                }
+                result.extend([augmented_item])
+                
+    return result
